@@ -46,7 +46,14 @@ describe("Number Formatter", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     formatter = createNumberFormatter(config);
-    mockNumberFormat.mockReturnValue("1,234.56");
+    mockNumberFormat.mockImplementation((value, options) => {
+      if (options?.style === "currency") {
+        const currency = options.currency || "USD";
+        const symbol = currency === "USD" ? "$" : currency === "EUR" ? "€" : currency;
+        return `${symbol}${value.toFixed(2)}`;
+      }
+      return "1,234.56";
+    });
   });
 
   describe("Basic Formatting", () => {

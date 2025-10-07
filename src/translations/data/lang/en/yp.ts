@@ -24,7 +24,6 @@ export const ypTranslations = {
     roomName: "Room Name",
     roomDescription: "Room Description",
     roomType: "Room Type",
-    visibility: "Visibility",
     encryption: "Encryption",
     members: "Members",
     searchRooms: "Search rooms...",
@@ -146,7 +145,6 @@ export const ypTranslations = {
     saveDiagram: "Save Diagram",
     loadDiagram: "Load Diagram",
     diagramTemplates: "Templates",
-    syntaxHelp: "Syntax Help",
 
     // Templates
     templates: {

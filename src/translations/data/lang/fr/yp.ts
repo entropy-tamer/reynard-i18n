@@ -24,7 +24,6 @@ export const ypTranslations = {
     roomName: "Nom de la Salle",
     roomDescription: "Description de la Salle",
     roomType: "Type de Salle",
-    visibility: "Visibilité",
     encryption: "Chiffrement",
     members: "Membres",
     searchRooms: "Rechercher des salles...",
@@ -146,7 +145,6 @@ export const ypTranslations = {
     saveDiagram: "Sauvegarder le Diagramme",
     loadDiagram: "Charger le Diagramme",
     diagramTemplates: "Modèles",
-    syntaxHelp: "Aide Syntaxe",
 
     // Templates
     templates: {

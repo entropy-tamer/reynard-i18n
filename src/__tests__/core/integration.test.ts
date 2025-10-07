@@ -4,15 +4,21 @@
  */
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { createI18nModule } from "../../index";
 
-// Mock all dependencies
+// Mock all dependencies BEFORE importing
 const mockTrackUsage = vi.fn();
+
+// Mock the analytics module
 vi.mock("../../features/analytics/analytics-i18n", () => ({
   createAnalyticsI18nModule: vi.fn().mockReturnValue({
     t: vi.fn().mockImplementation((key, params) => {
       // Call analytics.trackUsage when t is called
-      mockTrackUsage(key, "en");
+      // Use a try-catch to handle initialization order
+      try {
+        mockTrackUsage(key, "en");
+      } catch (e) {
+        // Mock not ready yet, ignore
+      }
       return "Hello";
     }),
     locale: vi.fn().mockReturnValue("en"),
@@ -260,27 +266,31 @@ vi.mock("../../features/debug", () => ({
   }),
 }));
 
-vi.mock("../../intl/IntlFormatter", () => ({
-  createIntlFormatter: vi.fn().mockReturnValue({
-    number: {
-      format: vi.fn().mockImplementation((value, preset, options) => {
-        if (preset === "currency") return `$${value.toFixed(2)}`;
-        if (preset === "percent") return `${(value * 100).toFixed(0)}%`;
-        return value.toLocaleString();
-      }),
-      formatCurrency: vi.fn().mockReturnValue("$1,234.56"),
-      formatPercent: vi.fn().mockReturnValue("75%"),
-    },
-    date: {
-      format: vi.fn().mockReturnValue("12/25/2023"),
-      formatLong: vi.fn().mockReturnValue("December 25, 2023"),
-    },
-    relativeTime: {
-      formatSmart: vi.fn().mockReturnValue("2 days ago"),
-    },
-    updateConfig: vi.fn(),
-  }),
-}));
+vi.mock("../../intl/IntlFormatter", () => {
+  const mockFormat = vi.fn().mockImplementation((value, preset, options) => {
+    if (preset === "currency") return `$${value.toLocaleString()}`;
+    if (preset === "percent") return `${(value * 100).toFixed(0)}%`;
+    return value.toLocaleString();
+  });
+
+  return {
+    createIntlFormatter: vi.fn().mockReturnValue({
+      number: {
+        format: mockFormat,
+        formatCurrency: vi.fn().mockReturnValue("$1,234.56"),
+        formatPercent: vi.fn().mockReturnValue("75%"),
+      },
+      date: {
+        format: vi.fn().mockReturnValue("12/25/2023"),
+        formatLong: vi.fn().mockReturnValue("December 25, 2023"),
+      },
+      relativeTime: {
+        formatSmart: vi.fn().mockReturnValue("2 days ago"),
+      },
+      updateConfig: vi.fn(),
+    }),
+  };
+});
 
 vi.mock("../../migration", () => ({
   TranslationManager: vi.fn().mockImplementation(() => ({
@@ -319,6 +329,9 @@ vi.stubGlobal("document", mockDocument);
 vi.stubGlobal("performance", {
   now: vi.fn().mockReturnValue(1000),
 });
+
+// Import after mocks are set up
+import { createI18nModule } from "../../index";
 
 describe("Enhanced I18n Integration Tests", () => {
   let i18n: any;

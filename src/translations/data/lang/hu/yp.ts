@@ -24,7 +24,6 @@ export const ypTranslations = {
     roomName: "Szoba Neve",
     roomDescription: "Szoba Leírása",
     roomType: "Szoba Típusa",
-    visibility: "Láthatóság",
     encryption: "Titkosítás",
     members: "Tagok",
     searchRooms: "Szobák keresése...",
@@ -146,7 +145,6 @@ export const ypTranslations = {
     saveDiagram: "Diagram Mentése",
     loadDiagram: "Diagram Betöltése",
     diagramTemplates: "Sablonok",
-    syntaxHelp: "Szintaxis Segítség",
 
     // Templates
     templates: {
