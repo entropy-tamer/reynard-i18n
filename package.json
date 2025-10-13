@@ -1,7 +1,7 @@
 {
   "name": "reynard-i18n",
   "version": "1.2.0",
-  "description": "Internationalization and localization utilities",
+  "description": "Comprehensive internationalization system for Reynard framework with 37 language support",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -41,8 +41,11 @@
   },
   "keywords": [
     "i18n",
-    "localization",
     "internationalization",
+    "localization",
+    "translations",
+    "reynard",
+    "solidjs",
     "typescript"
   ],
   "author": "Balazs Horvath",
@@ -60,12 +63,10 @@
   "peerDependencies": {
     "solid-js": "1.9.9"
   },
-  "homepage": "https://github.com/entropy-tamer/reynard-i18n",
-  "bugs": {
-    "url": "https://github.com/entropy-tamer/reynard-i18n/issues"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/entropy-tamer/reynard-i18n.git"
-  }
+  },
+  "homepage": "https://github.com/entropy-tamer/reynard-i18n",
+  "bugs": "https://github.com/entropy-tamer/reynard-i18n/issues"
 }
