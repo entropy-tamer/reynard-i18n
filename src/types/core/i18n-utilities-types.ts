@@ -1,5 +1,5 @@
 /**
- * @fileoverview Type definitions for i18n utilities and tooling infrastructure
+ * @file Type definitions for i18n utilities and tooling infrastructure
  *
  * This module contains TypeScript interfaces for the Reynard i18n system's
  * supporting infrastructure, including debugging utilities, performance monitoring,

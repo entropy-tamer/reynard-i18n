@@ -9,6 +9,9 @@ import type { LanguageCode, Translations } from "../../types";
 export const translationCache = new Map<string, Translations>();
 export const namespaceCache = new Map<string, Map<string, unknown>>();
 
+// Memory management
+const MAX_CACHE_SIZE = 10; // Limit cache size to prevent memory leaks
+
 // Load translations with caching
 export async function loadTranslationsWithCache(
   locale: LanguageCode,
@@ -21,10 +24,17 @@ export async function loadTranslationsWithCache(
 
   try {
     // Use provided import function or default
-    const defaultImportFn = importFn || ((path: string) => import(path));
+    const defaultImportFn = importFn || ((path: string) => import(/* @vite-ignore */ path));
     const translations = await defaultImportFn(`./lang/${locale}/index.js`);
 
     if (useCache) {
+      // Check cache size and clean up if necessary
+      if (translationCache.size >= MAX_CACHE_SIZE) {
+        const firstKey = translationCache.keys().next().value;
+        if (firstKey) {
+          translationCache.delete(firstKey);
+        }
+      }
       translationCache.set(locale, translations.default);
     }
 
@@ -33,10 +43,17 @@ export async function loadTranslationsWithCache(
     // Fallback to English if available
     if (locale !== "en") {
       try {
-        const defaultImportFn = importFn || ((path: string) => import(path));
+        const defaultImportFn = importFn || ((path: string) => import(/* @vite-ignore */ path));
         const englishTranslations = await defaultImportFn(`./lang/en/index.js`);
 
         if (useCache) {
+          // Check cache size and clean up if necessary
+          if (translationCache.size >= MAX_CACHE_SIZE) {
+            const firstKey = translationCache.keys().next().value;
+            if (firstKey) {
+              translationCache.delete(firstKey);
+            }
+          }
           translationCache.set(locale, englishTranslations.default);
         }
 

@@ -1,5 +1,5 @@
 /**
- * Type definitions for Reynard i18n system
+ * @file Type definitions for Reynard i18n system
  * Based on yipyap's comprehensive translation architecture
  *
  * This module aggregates all type definitions from specialized modules.

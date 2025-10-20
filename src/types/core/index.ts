@@ -1,5 +1,5 @@
 /**
- * Core type definitions
+ * @file Core type definitions
  */
 
 export * from "./common-types";

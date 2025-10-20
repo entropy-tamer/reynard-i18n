@@ -1,5 +1,5 @@
 /**
- * Common type definitions for the Reynard i18n system.
+ * @file Common type definitions for the Reynard i18n system.
  *
  * This module contains shared types and interfaces used across
  * the internationalization system.

@@ -1,5 +1,5 @@
 /**
- * Translation interface definitions for the Reynard i18n system.
+ * @file Translation interface definitions for the Reynard i18n system.
  *
  * This module re-exports all the specific translation interfaces for
  * different packages and components in the Reynard ecosystem.

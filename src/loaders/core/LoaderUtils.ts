@@ -24,5 +24,5 @@ export function createImportFunction(): (path: string) => Promise<{ default: Tra
       return globalImport;
     }
   }
-  return (path: string) => import(path);
+  return (path: string) => import(/* @vite-ignore */ path);
 }

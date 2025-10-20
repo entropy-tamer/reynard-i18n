@@ -1,5 +1,5 @@
 /**
- * Pluralization type definitions
+ * @file Pluralization type definitions
  */
 
 export * from "./pluralization-types";

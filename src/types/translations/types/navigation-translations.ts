@@ -1,5 +1,5 @@
 /**
- * Navigation translation interface definitions
+ * @file Navigation translation interface definitions
  */
 
 export interface NavigationTranslations {

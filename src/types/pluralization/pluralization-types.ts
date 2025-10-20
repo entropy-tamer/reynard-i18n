@@ -1,5 +1,5 @@
 /**
- * Pluralization type definitions for the Reynard i18n system.
+ * @file Pluralization type definitions for the Reynard i18n system.
  *
  * This module contains types and interfaces related to pluralization
  * rules and forms for different languages.
