@@ -24,5 +24,8 @@ export function createImportFunction(): (path: string) => Promise<{ default: Tra
       return globalImport;
     }
   }
-  return (path: string) => import(/* @vite-ignore */ path);
+  return (path: string) => {
+    // Use eval to avoid Vite dynamic import analysis
+    return eval(`import("${path}")`);
+  };
 }
