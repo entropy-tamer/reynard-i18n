@@ -4,8 +4,8 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { runPackageI18nTests } from "reynard-testing/utils";
-import { getPackageI18nConfig } from "reynard-testing/config";
+import { runPackageI18nTests } from "@entropy-tamer/reynard-testing/utils";
+import { getPackageI18nConfig } from "@entropy-tamer/reynard-testing/config";
 
 describe("i18n i18n Tests", () => {
   it("should pass all i18n validation checks", async () => {
