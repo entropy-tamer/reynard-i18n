@@ -1,26 +1,29 @@
-import { defineConfig } from "vite";
-import { resolve } from "path";
+import { defineConfig } from 'vite'
+import solid from 'vite-plugin-solid'
 
 export default defineConfig({
+  plugins: [solid()],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "ReynardI18n",
-      fileName: "index",
-      formats: ["es", "cjs"],
+      entry: 'src/index.ts',
+      name: 'ReynardI18n',
+      formats: ['es', 'cjs'],
+      fileName: (format) => {
+        if (format === 'es') return 'index.mjs'
+        if (format === 'cjs') return 'index.cjs'
+        return 'index.js'
+      }
     },
     rollupOptions: {
-      external: ["solid-js"],
+      external: ['solid-js'],
       output: {
         globals: {
-          "solid-js": "SolidJS",
-        },
-      },
+          'solid-js': 'SolidJS'
+        }
+      }
     },
-  },
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src"),
-    },
-  },
-});
+    target: 'es2020',
+    sourcemap: true,
+    minify: false
+  }
+})
