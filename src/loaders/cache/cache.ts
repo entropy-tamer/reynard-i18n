@@ -24,10 +24,12 @@ export async function loadTranslationsWithCache(
 
   try {
     // Use provided import function or default
-    const defaultImportFn = importFn || ((path: string) => {
-      // Use eval to avoid Vite dynamic import analysis
-      return eval(`import("${path}")`);
-    });
+    const defaultImportFn =
+      importFn ||
+      ((path: string) => {
+        // Use eval to avoid Vite dynamic import analysis
+        return eval(`import("${path}")`);
+      });
     const translations = await defaultImportFn(`./lang/${locale}/index.js`);
 
     if (useCache) {
@@ -46,10 +48,12 @@ export async function loadTranslationsWithCache(
     // Fallback to English if available
     if (locale !== "en") {
       try {
-        const defaultImportFn = importFn || ((path: string) => {
-          // Use eval to avoid Vite dynamic import analysis
-          return eval(`import("${path}")`);
-        });
+        const defaultImportFn =
+          importFn ||
+          ((path: string) => {
+            // Use eval to avoid Vite dynamic import analysis
+            return eval(`import("${path}")`);
+          });
         const englishTranslations = await defaultImportFn(`./lang/en/index.js`);
 
         if (useCache) {

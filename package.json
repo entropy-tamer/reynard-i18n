@@ -1,6 +1,6 @@
 {
   "name": "reynard-i18n",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Internationalization and localization utilities",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -52,7 +52,7 @@
   "author": "Balazs Horvath",
   "license": "MIT",
   "dependencies": {
-    "solid-js": "1.9.9"
+    "solid-js": "1.9.10"
   },
   "devDependencies": {
     "@types/node": "24.9.1",
@@ -64,7 +64,7 @@
     "vitest": "3.2.4"
   },
   "peerDependencies": {
-    "solid-js": "1.9.9"
+    "solid-js": "1.9.10"
   },
   "homepage": "https://github.com/entropy-tamer/reynard-i18n",
   "bugs": "https://github.com/entropy-tamer/reynard-i18n/issues",

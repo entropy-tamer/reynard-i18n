@@ -6,10 +6,10 @@ import type { IntlConfig } from "../../intl/IntlConfig";
 
 /**
  * IntlDateFormatter class for locale-aware date formatting
- * 
+ *
  * Provides various date formatting methods using the Intl.DateTimeFormat API
  * with support for different locales, time zones, and formatting styles.
- * 
+ *
  * @example
  * ```typescript
  * const formatter = new IntlDateFormatter({
@@ -42,10 +42,10 @@ export class IntlDateFormatter {
    * @example
    * ```typescript
    * const date = new Date('2023-12-31');
-   * const formatted = formatter.format(date, { 
-   *   year: 'numeric', 
-   *   month: 'long', 
-   *   day: 'numeric' 
+   * const formatted = formatter.format(date, {
+   *   year: 'numeric',
+   *   month: 'long',
+   *   day: 'numeric'
    * });
    * console.log(formatted); // "December 31, 2023"
    * ```
